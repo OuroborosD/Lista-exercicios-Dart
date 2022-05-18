@@ -50,21 +50,31 @@ String meio(String palavra){
 }
 
 //04 pegar a maior string deccorente da soma  das pelavras de um array
-String maior(strarr,k){
+String maior(final strarr,k){
   int tamanho = strarr.length;
   print(tamanho);
   String aux = "";
   String res = "";
+  List auxlist = [];
+  auxlist.addAll(strarr);
   for(int i = 0; i < tamanho;i++){
-    
-    for(int j = tamanho-1; j > 0; j--){
-        aux = strarr[i] + strarr[j];
+    print("entrou remove");
+    auxlist.removeAt(i);// remove da lista o proprio item, para não repetir quando unir
+
+    for(int j = tamanho-2; j >= 0; j--){
+      print("entrou J: $j");
+        aux = strarr[i] ;
+        print("entrou strarr");
+        print(auxlist.length, );
+        aux =  auxlist[j];
+        print("entrou baixo aux");
         if(aux.length > res.length){
             res = aux;
-           
-        }
-    }
+        }}
+    print("--------------");
+    print("valor da lista ---- $strarr");
+    auxlist.insert(i, strarr[i]);
+    print("lista final $auxlist");
   }
-
   return res;
 }
