@@ -3,7 +3,10 @@ import 'dart:io';
 main(){
   //repetir();
   //repetir2();
-  meio("programas");
+  String oi =meio("programas");
+  print(oi);
+  List valores = ["asdf","maria","do bairro","eu sou","ai ai ai","1sdsa5as"];
+  maior(valores, 2);
 }
 
 //01 faça um programa que recebe, um numero interio e repete ele o mesmo numero de vezes
@@ -40,7 +43,28 @@ String meio(String palavra){
       print(aux);
   }else{
       int indice =  (tamanho/2).round();
-      print(palavra[indice-1]);
+      aux = palavra[indice-1];
+      
   };
-  return "";
+  return aux;
+}
+
+//04 pegar a maior string deccorente da soma  das pelavras de um array
+String maior(strarr,k){
+  int tamanho = strarr.length;
+  print(tamanho);
+  String aux = "";
+  String res = "";
+  for(int i = 0; i < tamanho;i++){
+    
+    for(int j = tamanho-1; j > 0; j--){
+        aux = strarr[i] + strarr[j];
+        if(aux.length > res.length){
+            res = aux;
+           
+        }
+    }
+  }
+
+  return res;
 }
