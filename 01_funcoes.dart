@@ -6,7 +6,7 @@ main(){
   String oi =meio("programas");
   print(oi);
   List valores = ["asdf","maria","do bairro","eu sou","ai ai ai","1sdsa5as"];
-  maior(valores, 2);
+  maiorV2(valores, 15);
 }
 
 //01 faça um programa que recebe, um numero interio e repete ele o mesmo numero de vezes
@@ -56,17 +56,15 @@ String maior(final strarr,k){
   String aux = "";
   String res = "";
   List auxlist = [];
-  auxlist.addAll(strarr);
-  for(int i = 0; i < tamanho;i++){
+  auxlist.addAll(strarr); // comando serve para 
+  if(k > 0 && k < tamanho){
+    for(int i = 0; i < tamanho;i++){
     print("entrou remove");
     auxlist.removeAt(i);// remove da lista o proprio item, para não repetir quando unir
 
     for(int j = tamanho-2; j >= 0; j--){
       print("entrou J: $j");
-        aux = strarr[i] ;
-        print("entrou strarr");
-        print(auxlist.length, );
-        aux =  auxlist[j];
+        aux = strarr[i] + auxlist[j];
         print("entrou baixo aux");
         if(aux.length > res.length){
             res = aux;
@@ -75,6 +73,35 @@ String maior(final strarr,k){
     print("valor da lista ---- $strarr");
     auxlist.insert(i, strarr[i]);
     print("lista final $auxlist");
-  }
+  }}
   return res;
+}
+
+//04.v2 pegar a maior string deccorente da soma  das palavras de um array
+String maiorV2(List strarr,int k){
+  String finalRess = "";
+  String? auxress;
+  int count = 0;
+  if(k < strarr.length){
+    while(count != k){// o k vai verificar palavras é para juntar 
+        auxress = auxmaior(strarr);
+        strarr.remove(auxress);// pega o valor, que recebeu, e apaga na lista, para não repetir qunado for escolher
+        finalRess = finalRess + auxress;
+        count ++;
+    }
+  }
+  
+  return finalRess;
+}
+
+
+String auxmaior(List lista){
+    String tamanho ="";
+    for(String nome in lista){
+      if(nome.length > tamanho.length){
+          tamanho = nome;
+      }
+    }
+  
+    return tamanho;
 }
